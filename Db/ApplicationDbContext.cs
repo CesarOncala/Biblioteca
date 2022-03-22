@@ -32,7 +32,6 @@ namespace Biblioteca.Db
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             modelBuilder.ApplyConfiguration(new AutoriaMap());
             modelBuilder.ApplyConfiguration(new AutorMap());
             modelBuilder.ApplyConfiguration(new EmprestimoMap());
@@ -42,8 +41,6 @@ namespace Biblioteca.Db
             modelBuilder.ApplyConfiguration(new PaisMap());
             modelBuilder.ApplyConfiguration(new TipoUsuarioMap());
             modelBuilder.ApplyConfiguration(new EditoraMap());
-
-
         }
 
     }

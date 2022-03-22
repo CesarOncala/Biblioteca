@@ -8,6 +8,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
+
+
+
 namespace Biblioteca
 {
     public class Startup
@@ -23,10 +26,13 @@ namespace Biblioteca
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<ApplicationDbContext>(o=> o.UseSqlServer
+            services.AddControllers()
+              .AddNewtonsoftJson(o => o.SerializerSettings.ReferenceLoopHandling = 
+                Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddDbContext<ApplicationDbContext>(o => o.UseNpgsql
             (Configuration.GetConnectionString("DbContextConnection")));
 
-            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Biblioteca", Version = "v1" });
